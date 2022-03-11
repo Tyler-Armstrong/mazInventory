@@ -1,0 +1,56 @@
+body {
+            margin: 0;
+           
+           background-color: darkgrey;
+ }
+h1{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.butts {
+    
+}
+li{
+    float: left;
+}
+.aboveTable{
+    padding-bottom: 20px;
+    background-color: darkgrey;
+}
+header li{
+         display: inline;
+         padding-right: 150px;
+         font-size: 15pt;
+    padding-left:6%;
+  
+  
+  
+  
+}
+header{
+            width: 100%;
+            background: gainsboro;
+            
+            padding: 20px 10px 0px 10px;
+             top: 0;
+              height: 80px;
+              
+              
+}
+.whole{
+    margin-left: 10%;
+    margin-right: 10%;
+            
+}
+.formtable{
+    margin-left: auto; 
+  margin-right: auto;
+}
+table{
+    align-self: center;
+}
+.btn-success {
+    padding: 20px 70px;
+    
+}
