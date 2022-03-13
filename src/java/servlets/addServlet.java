@@ -39,6 +39,8 @@ public class addServlet extends HttpServlet {
         
          
         try {    
+            od = od + "\"";
+            id = id + "\"";
         inventory.insert(serialNum, description, od, pin, box, id, length, status);
         request.setAttribute("message", "add Successful");
         }catch (Exception ex) {
