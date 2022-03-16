@@ -1,7 +1,7 @@
 
 package dataaccess;
 
-import java.sql.SQLException;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,20 +11,23 @@ import models.Inventory;
 
 public class InventoryDB {
     
-    public List<Inventory> getAll(int offset, int count) throws SQLException{
+    public List<Inventory> getAll(int offset, int count) throws Exception{
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         //User user = em.find(User.class, email);
         try{
         List<Inventory> inventory = em.createNamedQuery("Inventory.findAll", Inventory.class).getResultList() ;
         
         return inventory;
-        
+        }catch (Exception ex) {
+            return null;
         }finally {
+           
         em.close();
+        
         }
     }
 
-    public void add(Inventory newInv) {
+    public void add(Inventory newInv)throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         
@@ -41,7 +44,7 @@ public class InventoryDB {
         
     }    
 
-    public void update(Inventory updateItem) {        
+    public void update(Inventory updateItem) throws Exception {        
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         
@@ -58,13 +61,15 @@ public class InventoryDB {
         
     }
 
-    public Inventory get(int primary) {
+    public Inventory get(int primary) throws Exception {
        EntityManager em = DBUtil.getEmFactory().createEntityManager();
        try {
        //List<Inventory> inventory = em.createNamedQuery("Inventory.findAll", Inventory.class).getResultList();
        
        Inventory in = em.find(Inventory.class, primary);
        return in;
+       }catch (Exception ex) {
+            return null;
        }finally {
        em.close();
        }
@@ -72,16 +77,21 @@ public class InventoryDB {
     }
 
     //doesnt do anything probably dont need
-    public List<Inventory> searchSerial(String serialSearch) {
+    public List<Inventory> searchSerial(String serialSearch) throws Exception {
         EntityManager em =  DBUtil.getEmFactory().createEntityManager();
         
+        try {
         List<Inventory> listy = em.createNamedQuery("Inventory.findBySerialNumber", Inventory.class).getResultList();
         
         return listy;
-        
+        }catch (Exception ex) {
+            return null;
+        }finally {
+            em.close();
+        }
     }
 
-    public void delete(int keyValue) {
+    public void delete(int keyValue) throws Exception{
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();  
         
@@ -100,11 +110,17 @@ public class InventoryDB {
         
     }
 
-    public List<Inventory> getAvailable() {
+    public List<Inventory> getAvailable() throws Exception {
         EntityManager em =  DBUtil.getEmFactory().createEntityManager();
         
+        try {
         List<Inventory> available = em.createNamedQuery("Inventory.findByStatusName").setParameter("statusName", "Available") .getResultList();
         
         return available;
+        }catch (Exception ex) {
+            return null;
+        }finally {
+         em.close();
+                }
     }
 }

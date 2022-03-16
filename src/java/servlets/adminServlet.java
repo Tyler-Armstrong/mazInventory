@@ -42,7 +42,7 @@ public class adminServlet extends HttpServlet {
             request.setAttribute("end", end);
             
             
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
             // not necessary to log exception since it is not important
         }
@@ -64,7 +64,15 @@ public class adminServlet extends HttpServlet {
                 case "deleteItem":
                     String pkValueDel = request.getParameter("pkValue");
                     int keyValue = Integer.parseInt(pkValueDel);
-                    inventory.delete(keyValue);
+                    
+        {
+            try {
+                inventory.delete(keyValue);
+            } catch (Exception ex) {
+                request.setAttribute("message", "Item Could not be Deleted");
+                Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                     
                     request.setAttribute("message", "Item Deleted");
                     
@@ -75,8 +83,15 @@ public class adminServlet extends HttpServlet {
                 case "editItem":
                     String status = request.getParameter("editStatus");
                     String pkValue = request.getParameter("pkValue");
-                    //Inventory updateItem = new Inventory();
-                    inventory.update(status, pkValue);
+        {
+            try {
+                //Inventory updateItem = new Inventory();
+                inventory.update(status, pkValue);
+            } catch (Exception ex) {
+                request.setAttribute("message", "Item Unchanged");
+                Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                     
                     
                     break;
@@ -103,7 +118,7 @@ public class adminServlet extends HttpServlet {
                         
                         
                         
-                    } catch (SQLException ex) {
+                    } catch (Exception ex) {
                         Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
@@ -113,7 +128,10 @@ public class adminServlet extends HttpServlet {
                     
                     
                 case "reportAvailable":
-                    List<Inventory> reportList = inventory.itemReport();
+                    List<Inventory> reportList;
+        try {
+            reportList = inventory.itemReport();
+        
                     
                     response.setHeader("Content-Disposition","attachment;filename=Item_report.csv");
                     PrintWriter outItem = response.getWriter();
@@ -138,8 +156,12 @@ public class adminServlet extends HttpServlet {
                         }
                         
                     }
-                    outItem.close();
                     
+                    outItem.close();
+                    } catch (Exception ex) {
+                        request.setAttribute("message", "Report Failed");
+            Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
                     
                     break;
                     
@@ -155,7 +177,7 @@ public class adminServlet extends HttpServlet {
                 return;
                 
                 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
                 

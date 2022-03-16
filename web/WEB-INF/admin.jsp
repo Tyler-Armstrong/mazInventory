@@ -87,7 +87,7 @@
                     
                <form method="POST" action ="maz_admin">    
                     <td><select name="editStatus" id="editStatus">
-                    <option value="" selected>${inventory.statusName}</option>
+                    <option value="${inventory.statusName}" selected>${inventory.statusName}</option>
                 <option value="Available">Available</option>
                 <option value="Rented">Rented</option>
                 <option value="Deactivated">Deactivated</option>
