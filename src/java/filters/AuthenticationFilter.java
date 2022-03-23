@@ -23,7 +23,9 @@ public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         
-        // session.setAttribute("username", username);  
+        // session.setAttribute("username", username); 
+        
+        
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpSession session = httpRequest.getSession();
         String username = (String) session.getAttribute("username");
