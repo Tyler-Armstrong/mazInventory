@@ -61,10 +61,92 @@ public class adminServlet extends HttpServlet {
             
     
             switch (action) {
+                
+                case "reportAll":
+                    List<Inventory> reportListRent;
+        try {
+            reportListRent = inventory.getAll(page, pageSize);
+        
+                    
+                    response.setHeader("Content-Disposition","attachment;filename=Item_report_All.csv");
+                    PrintWriter outItem = response.getWriter();
+                    
+                    outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 
+                                  "Box Connection ," + "Id     ," + "Length ," + "Status " + "\n");
+                    
+                    for (Inventory reportInv : reportListRent) {
+                        
+                            String serialReport = reportInv.getSerialNumber();
+                            String descriptionReport = reportInv.getDescription();
+                            String odReport = reportInv.getOd();
+                            String pinReport = reportInv.getPinConnect();
+                            String boxReport = reportInv.getBoxConnect();
+                            String idReport = reportInv.getId();
+                            String lengthReport = reportInv.getLength();
+                            String statusReport = reportInv.getStatusName();
+                            
+                            outItem.write(serialReport + "," + descriptionReport + "," + odReport + "," + pinReport + "," 
+                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "\n" );
+                            
+                        
+                        
+                    }
+                    
+                    outItem.close();
+                    } catch (Exception ex) {
+                        request.setAttribute("message", "Report Failed");
+            Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+                    
+                    break;
+                
+                
+                case "reportRent":
+                    
+                    List<Inventory> reportListAll;
+        try {
+            reportListAll = inventory.getAll(page, pageSize);
+        
+                    
+                    response.setHeader("Content-Disposition","attachment;filename=Item_report_Rented.csv");
+                    PrintWriter outItem = response.getWriter();
+                    
+                    outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 
+                                  "Box Connection ," + "Id     ," + "Length ," + "Status " + "\n");
+                    
+                    for (Inventory reportInv : reportListAll) {
+                        if(reportInv.getStatusName().equals("Rented")) {
+                            String serialReport = reportInv.getSerialNumber();
+                            String descriptionReport = reportInv.getDescription();
+                            String odReport = reportInv.getOd();
+                            String pinReport = reportInv.getPinConnect();
+                            String boxReport = reportInv.getBoxConnect();
+                            String idReport = reportInv.getId();
+                            String lengthReport = reportInv.getLength();
+                            String statusReport = reportInv.getStatusName();
+                            
+                            outItem.write(serialReport + "," + descriptionReport + "," + odReport + "," + pinReport + "," 
+                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "\n" );
+                            
+                        }
+                        
+                    }
+                    
+                    outItem.close();
+                    } catch (Exception ex) {
+                        request.setAttribute("message", "Report Failed");
+            Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    break;
+                
+                
+                
                 case "deleteItem":
                     String pkValueDel = request.getParameter("pkValue");
-                    int keyValue = Integer.parseInt(pkValueDel);
-                    
+                    int keyValue = Integer.parseInt(pkValueDel);                 
+                   
         {
             try {
                 inventory.delete(keyValue);
@@ -133,7 +215,7 @@ public class adminServlet extends HttpServlet {
             reportList = inventory.itemReport();
         
                     
-                    response.setHeader("Content-Disposition","attachment;filename=Item_report.csv");
+                    response.setHeader("Content-Disposition","attachment;filename=Item_report_Available.csv");
                     PrintWriter outItem = response.getWriter();
                     
                     outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 

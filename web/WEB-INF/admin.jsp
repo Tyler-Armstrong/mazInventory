@@ -46,14 +46,29 @@
                     </li>
                 </form> 
                     
-                <form method="POST" action="maz_admin">
-                    <li>
-                    <input type="submit" value="Report Available"> <input type="hidden" name="action" value="reportAvailable">
-                    </li>
-                </form>
-            
-              
                     
+                   
+                 
+                <form method="POST" action="maz_admin">
+                    
+                    <input type="submit" value="Report Available" style="float: left;"> <input type="hidden" name="action" value="reportAvailable">
+                    
+                </form>
+                       
+                    <form method="POST" action="maz_admin" >
+                        
+                            <input type="submit" value="Report Rented" style="float: left;"> <input type="hidden" name="action" value="reportRent">
+                        
+                    </form>    
+                    
+                       
+                    <form method="POST" action="maz_admin" >
+                        
+                            <input type="submit" value="Report All" align="left" > <input type="hidden" name="action" value="reportAll"
+                        
+                        
+                   </div>
+                
                 
                </ul>
           </header>                      
@@ -69,7 +84,7 @@
                     <th>Pin Connection</th>
                     <th>Box Connection</th>
                     <th>ID</th>
-                    <th>Length</th>
+                    <th>Length (Meters)</th>
                     <th>Status</th>
                     <th>Edit Status</th>
                     <th>Delete</th>
@@ -91,6 +106,7 @@
                 <option value="Available">Available</option>
                 <option value="Rented">Rented</option>
                 <option value="Deactivated">Deactivated</option>
+                <option value="In Service">In Service</option>
                     </select></td>
                         
                         

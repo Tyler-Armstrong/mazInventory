@@ -135,7 +135,8 @@
                 <option value="3 1/4">3 1/4"</option>
             </select><br><br>
            
-            Length : <input type="text" name="lengthAdd" placeholder="Length" required><br><br>
+            <label for="lengthAdd">Length (Meters): </label> <br>
+            <input type="number" name="lengthAdd" placeholder="Length" step=".001" required ><br><br>
             
             <label for="statusAdd">Status :</label>
             <select name="statusAdd" id="statusAdd" required>
@@ -143,6 +144,7 @@
                 <option value="Available">Available</option>
                 <option value="Deactivated">Deactivated</option>
                 <option value="Rented">Rented</option>
+                <option value="In Service">In Service</option>
             </select><br><br>
             
             <input type="submit" value="Add Item"><br><br>

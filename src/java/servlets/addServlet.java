@@ -37,12 +37,14 @@ public class addServlet extends HttpServlet {
         String status = request.getParameter("statusAdd");
         String action = request.getParameter("action");
         
-         
-        try {    
+        
+        
+        try {  
+            serialNum = serialNum.toUpperCase();
             od = od + "\"";
             id = id + "\"";
-        inventory.insert(serialNum, description, od, pin, box, id, length, status);
-        request.setAttribute("message", "add Successful");
+            inventory.insert(serialNum, description, od, pin, box, id, length, status);
+            request.setAttribute("message", "Add Successful");
         }catch (Exception ex) {
             Logger.getLogger(addServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "Serial Number already Exists");

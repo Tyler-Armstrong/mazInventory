@@ -23,6 +23,11 @@ input[type=text], select, textarea {
   
   resize: vertical;
 }
+input[type=number], textarea {
+    width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
 
 input[type=submit] {
   background-color: #04AA6D;
