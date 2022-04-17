@@ -2,7 +2,7 @@
 <Context path="/Maz_inventory">
 <Resource
         name="jdbc/maz-inventorydb"
-        url="jdbc:mysql://localhost:3306/maz-inventorydb" 
+        url="jdbc:mysql://localhost:3308/maz-inventorydb" 
         username="root"
         password="password"
         maxActive="100"

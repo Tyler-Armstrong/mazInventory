@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inventory.findByBoxConnect", query = "SELECT i FROM Inventory i WHERE i.boxConnect = :boxConnect")
     , @NamedQuery(name = "Inventory.findById", query = "SELECT i FROM Inventory i WHERE i.id = :id")
     , @NamedQuery(name = "Inventory.findByLength", query = "SELECT i FROM Inventory i WHERE i.length = :length")
-    , @NamedQuery(name = "Inventory.findByStatusName", query = "SELECT i FROM Inventory i WHERE i.statusName = :statusName")})
+    , @NamedQuery(name = "Inventory.findByStatusName", query = "SELECT i FROM Inventory i WHERE i.statusName = :statusName")
+    , @NamedQuery(name = "Inventory.findByLocation", query = "SELECT i FROM Inventory i WHERE i.location = :location")})
 public class Inventory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,12 +62,15 @@ public class Inventory implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private String id;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "length")
     private String length;
     @Basic(optional = false)
     @Column(name = "status_name")
     private String statusName;
+    @Column(name = "Location")
+    private String location;
 
     public Inventory() {
     }
@@ -75,7 +79,7 @@ public class Inventory implements Serializable {
         this.itemId = itemId;
     }
 
-    public Inventory(Integer itemId, String serialNumber, String description, String od, String pinConnect, String boxConnect, String id, String length, String statusName) {
+    public Inventory(Integer itemId, String serialNumber, String description, String od, String pinConnect, String boxConnect, String id, String length, String statusName, String location) {
         this.itemId = itemId;
         this.serialNumber = serialNumber;
         this.description = description;
@@ -85,6 +89,7 @@ public class Inventory implements Serializable {
         this.id = id;
         this.length = length;
         this.statusName = statusName;
+        this.location = location;
     }
 
     public Integer getItemId() {
@@ -157,6 +162,14 @@ public class Inventory implements Serializable {
 
     public void setStatusName(String statusName) {
         this.statusName = statusName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override

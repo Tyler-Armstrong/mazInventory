@@ -36,14 +36,14 @@ public class addServlet extends HttpServlet {
         String length = request.getParameter("lengthAdd");
         String status = request.getParameter("statusAdd");
         String action = request.getParameter("action");
-        
+        String location = request.getParameter("locationAdd");
         
         
         try {  
             serialNum = serialNum.toUpperCase();
             od = od + "\"";
             id = id + "\"";
-            inventory.insert(serialNum, description, od, pin, box, id, length, status);
+            inventory.insert(serialNum, description, od, pin, box, id, length, status, location);
             request.setAttribute("message", "Add Successful");
         }catch (Exception ex) {
             Logger.getLogger(addServlet.class.getName()).log(Level.SEVERE, null, ex);

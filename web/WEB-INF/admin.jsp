@@ -64,8 +64,8 @@
                        
                     <form method="POST" action="maz_admin" >
                         
-                            <input type="submit" value="Report All" align="left" > <input type="hidden" name="action" value="reportAll"
-                        
+                        <input type="submit" value="Report All" align="left" > <input type="hidden" name="action" value="reportAll">
+                     </form>
                         
                    </div>
                 
@@ -86,21 +86,151 @@
                     <th>ID</th>
                     <th>Length (Meters)</th>
                     <th>Status</th>
-                    <th>Edit Status</th>
+                    <th>Location</th>
+                    <th>Edit Row</th>
                     <th>Delete</th>
                 </tr>    
                 
             <c:forEach var="inventory" items="${inventory}">
                 <tr>
+                     
                     <td><c:out value="${inventory.serialNumber}"></c:out> </td>
-                    <td><c:out value="${inventory.description}"></c:out> </td>
-                    <td><c:out value="${inventory.od}"></c:out> </td>
-                    <td><c:out value="${inventory.pinConnect}"></c:out> </td>
-                    <td><c:out value="${inventory.boxConnect}"></c:out> </td>
-                    <td><c:out value="${inventory.id}"></c:out> </td>
-                    <td><c:out value="${inventory.length}"></c:out> </td>
                     
-               <form method="POST" action ="maz_admin">    
+        <form method="POST" action ="maz_admin">                       
+                        
+                   
+                    
+                    <td>
+                        <select name="editDescription" id="editDescription" required>
+                <option value="${inventory.description}" selected>${inventory.description}</option>               
+                <option value="NM Slick Collar">NM Slick Collar</option>
+                <option value="NM Flex Collar">NM Flex Collar</option>
+                <option value="NM Slick Pony">NM Slick Pony</option>
+                <option value="NM Flex Pony">NM Flex Pony</option>
+                <option value="NM Stabilizer">NM Stabilizer</option>
+                <option value="NM Saver Sub">NM Saver Sub</option>
+                <option value="NM Cross Over">NM Cross Over</option>
+                <option value="NM Float Sub">NM Float Sub</option>
+                <option value="Jar">Jar</option>
+                <option value="Jar Pony">Jar Pony</option>
+                <option value="Shock Sub">Shock Sub</option>
+                <option value="Steel Stablizer">Steel Stablizer</option>
+                <option value="Steel Cross Over Sub">Steel Cross Over Sub</option>
+                <option value="Pickup Sub">Pickup Sub</option>
+                <option value="TAL Dampner">TAL Dampner</option>
+                <option value="Steel Saver Sub">Steel Saver Sub</option>
+                <option value="Reamer">Reamer</option>
+                <option value="Tapered Blade Reamer">Tapered Blade Reamer</option>
+                <option value="Sub Basket">Sub Basket</option>
+                <option value="Fin Cutter Sub">Fin Cutter Sub</option>
+                <option value="Filter Sub">Filter Sub</option>
+                <option value="NM Filter Sub">NM Filter Sub</option>
+                <option value="Filter Screen">Filter Screen</option>
+            </select>
+                    </td>                  
+                    
+                    
+                    <td>  
+                   <select name="editOD" id="editOD" required>
+                <option value="${inventory.od}" selected>${inventory.od}</option>
+                <option value="4 3/4">4 3/4"</option>
+                <option value="5">5"</option>
+                <option value="5 1/4">5 1/4"</option>
+                <option value="5 7/8">5 7/8"</option>
+                <option value="6">6"</option>
+                <option value="6 1/4">6 1/4"</option>
+                <option value="6 1/2">6 1/2"</option>
+                <option value="6 3/4">6 3/4"</option>
+                <option value="7">7"</option>
+                <option value="8">8"</option>
+                <option value="8 1/4">8 1/4"</option>
+                <option value="8 1/2">8 1/2"</option>
+                <option value="9">9"</option>
+                <option value="9 1/2">9 1/2"</option>
+                
+                
+                   </select>
+                    </td>
+                    
+                    
+                    <td>                     
+            <select name="editPin" id="editPin" required>
+                <option value="${inventory.pinConnect}" selected>${inventory.pinConnect}</option>
+                <option value="3 1/2 IF">3 1/2 IF</option>
+                <option value="4 FH">4 FH</option>
+                <option value="4 1/2 XH">4 1/2 XH</option>
+                <option value="4 1/2 IF">4 1/2 IF</option>
+                <option value="5 1/2 FH">5 1/2 FH</option>
+                <option value="6 5/8 REG">6 5/8 REG</option>
+                <option value="7 5/8 REG">7 5/8 REG</option>
+                <option value="DS38">DS38</option>
+                <option value="DS40">DS40</option>
+                <option value="XT39">XT39</option>
+                <option value="CET43">CET43</option>
+                <option value="HT55">HT55</option>
+                <option value="3 1/2 REG">3 1/2 REG</option>
+                <option value="4 1/2 REG">4 1/2 REG</option>
+                <option value="4 H90">4 H90</option>
+                <option value="4 1/2 H90">4 1/2 H90</option>
+                <option value="5 H90">5 H90</option>
+                <option value="7 H90">7 H90</option>
+                <option value="5 1/2 IF">5 1/2 IF</option>
+                <option value="NC35">NC35</option>
+                <option value="Lift Upset">Lift Upset</option>
+                <option value="Lift Bail">Lift Bail</option>
+            </select>
+                    </td>
+                    
+                    
+                    
+                    <td>
+                        <select name="editBox" id="editBox" required>
+                <option value="${inventory.boxConnect}" selected>${inventory.boxConnect}</option>
+                <option value="3 1/2 IF">3 1/2 IF</option>
+                <option value="4 FH">4 FH</option>
+                <option value="4 1/2 XH">4 1/2 XH</option>
+                <option value="4 1/2 IF">4 1/2 IF</option>
+                <option value="5 1/2 FH">5 1/2 FH</option>
+                <option value="6 5/8 REG">6 5/8 REG</option>
+                <option value="7 5/8 REG">7 5/8 REG</option>
+                <option value="DS38">DS38</option>
+                <option value="DS40">DS40</option>
+                <option value="XT39">XT39</option>
+                <option value="CET43">CET43</option>
+                <option value="HT55">HT55</option>
+                <option value="3 1/2 REG">3 1/2 REG</option>
+                <option value="4 1/2 REG">4 1/2 REG</option>
+                <option value="4 H90">4 H90</option>
+                <option value="4 1/2 H90">4 1/2 H90</option>
+                <option value="5 H90">5 H90</option>
+                <option value="7 H90">7 H90</option>
+                <option value="5 1/2 IF">5 1/2 IF</option>
+                <option value="NC35">NC35</option>
+             </select>
+                    </td>                      
+                    
+                    
+                    
+                    <td>
+                    <select name="editId" id="editId" required>
+                <option value="${inventory.id}" selected>${inventory.id}</option>
+                <option value="2">2"</option>
+                <option value="2 1/4">2 1/4"</option>
+                <option value="2 1/2">2 1/2"</option>
+                <option value="2 11/16">2 11/16"</option>
+                <option value="2 13/16">2 13/16"</option>
+                <option value="3">3"</option>
+                <option value="3 1/4">3 1/4"</option>
+                     </select>
+                    </td>
+                    
+                    
+                    
+                    <td>                       
+                        <input type="number" name="editLength" value="${inventory.length}" step=".001" size="15">
+                    </td>
+                    
+                  
                     <td><select name="editStatus" id="editStatus">
                     <option value="${inventory.statusName}" selected>${inventory.statusName}</option>
                 <option value="Available">Available</option>
@@ -108,21 +238,29 @@
                 <option value="Deactivated">Deactivated</option>
                 <option value="In Service">In Service</option>
                     </select></td>
-                        
-                        
-                  
                     
-                
+                                      
+              
+                    <td>
+                        <select name="editLocation" id="editLocation">
+                    <option value="${inventory.location}" selected>${inventory.location}</option>
+                <option value="Calgary">Calgary</option>
+                <option value="Nisku">Nisku</option>
+                <option value="Grand Prairie">Grande Prairie</option>
+                    </select>
+                    </td>
+                    
+                    
                     <td><button class="edt"><i class="fa fa-edit"></i></button></td>
                         <input type="hidden" name="action" value="editItem">
                         <input type="hidden" name="pkValue" value="${inventory.itemId}">
-                </form>
+    </form>
                 
-                <form method="POST" action ="maz_admin">
+    <form method="POST" action ="maz_admin">
                     <td><button class="del"><i class="fa fa-trash"></i></button></td>
                         <input type="hidden" name="action" value="deleteItem">
                         <input type="hidden" name="pkValue" value="${inventory.itemId}">
-                </form>
+    </form>
                 </tr>
             </c:forEach>
              </div>     

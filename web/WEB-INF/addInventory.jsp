@@ -47,7 +47,11 @@
                 <option value="Steel Saver Sub">Steel Saver Sub</option>
                 <option value="Reamer">Reamer</option>
                 <option value="Tapered Blade Reamer">Tapered Blade Reamer</option>
-                <option value="Sub Basket">Sub Basket</option>                
+                <option value="Sub Basket">Sub Basket</option>
+                <option value="Fin Cutter Sub">Fin Cutter Sub</option>
+                <option value="Filter Sub">Filter Sub</option>
+                <option value="NM Filter Sub">NM Filter Sub</option>
+                <option value="Filter Screen">Filter Screen</option>
             </select><br><br>
             
             <label for="ODAdd">OD :</label>
@@ -56,12 +60,15 @@
                 <option value="4 3/4">4 3/4"</option>
                 <option value="5">5"</option>
                 <option value="5 1/4">5 1/4"</option>
+                <option value="5 7/8">5 7/8"</option>
                 <option value="6">6"</option>
+                <option value="6 1/4">6 1/4"</option>
                 <option value="6 1/2">6 1/2"</option>
                 <option value="6 3/4">6 3/4"</option>
                 <option value="7">7"</option>
                 <option value="8">8"</option>
                 <option value="8 1/4">8 1/4"</option>
+                <option value="8 1/2">8 1/2"</option>
                 <option value="9">9"</option>
                 <option value="9 1/2">9 1/2"</option>
                 
@@ -92,6 +99,8 @@
                 <option value="7 H90">7 H90</option>
                 <option value="5 1/2 IF">5 1/2 IF</option>
                 <option value="NC35">NC35</option>
+                <option value="Lift Upset">Lift Upset</option>
+                <option value="Lift Bail">Lift Bail</option>
             </select><br><br>
             
             
@@ -147,6 +156,14 @@
                 <option value="In Service">In Service</option>
             </select><br><br>
             
+            <label for="locationAdd">Location :</label>
+            <select name="locationAdd" id="locationAdd" required>
+                <option value=""></option>
+                <option value="Calgary">Calgary</option>
+                <option value="Nisku">Nisku</option>
+                <option value="Grand Prairie">Grande Prairie</option>
+            </select>
+            <br><br>
             <input type="submit" value="Add Item"><br><br>
         </form>
             

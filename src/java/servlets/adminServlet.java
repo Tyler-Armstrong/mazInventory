@@ -165,10 +165,18 @@ public class adminServlet extends HttpServlet {
                 case "editItem":
                     String status = request.getParameter("editStatus");
                     String pkValue = request.getParameter("pkValue");
+                    String description = request.getParameter("editDescription");
+                    String od = request.getParameter("editOD");
+                    String pinCon = request.getParameter("editPin");
+                    String boxCon = request.getParameter("editBox");
+                    String id = request.getParameter("editId");
+                    String length = request.getParameter("editLength");
+                    String location = request.getParameter("editLocation");
+                    
         {
             try {
                 //Inventory updateItem = new Inventory();
-                inventory.update(status, pkValue);
+                inventory.update(status, pkValue, description, od, pinCon, boxCon, id, length, location);
             } catch (Exception ex) {
                 request.setAttribute("message", "Item Unchanged");
                 Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
