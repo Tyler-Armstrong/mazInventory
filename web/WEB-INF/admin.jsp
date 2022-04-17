@@ -206,6 +206,8 @@
                 <option value="7 H90">7 H90</option>
                 <option value="5 1/2 IF">5 1/2 IF</option>
                 <option value="NC35">NC35</option>
+                <option value="Lift Upset">Lift Upset</option>
+                <option value="Lift Bail">Lift Bail</option>
              </select>
                     </td>                      
                     
