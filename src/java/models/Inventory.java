@@ -6,7 +6,10 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +42,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inventory.findByStatusName", query = "SELECT i FROM Inventory i WHERE i.statusName = :statusName")
     , @NamedQuery(name = "Inventory.findByLocation", query = "SELECT i FROM Inventory i WHERE i.location = :location")})
 public class Inventory implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "length")
+    private BigDecimal length;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inventory")
+    private List<Rental> rentalList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -62,10 +74,6 @@ public class Inventory implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private String id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @Column(name = "length")
-    private String length;
     @Basic(optional = false)
     @Column(name = "status_name")
     private String statusName;
@@ -79,7 +87,7 @@ public class Inventory implements Serializable {
         this.itemId = itemId;
     }
 
-    public Inventory(Integer itemId, String serialNumber, String description, String od, String pinConnect, String boxConnect, String id, String length, String statusName, String location) {
+    public Inventory(Integer itemId, String serialNumber, String description, String od, String pinConnect, String boxConnect, String id, BigDecimal length, String statusName, String location) {
         this.itemId = itemId;
         this.serialNumber = serialNumber;
         this.description = description;
@@ -148,13 +156,6 @@ public class Inventory implements Serializable {
         this.id = id;
     }
 
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
-    }
 
     public String getStatusName() {
         return statusName;
@@ -195,6 +196,23 @@ public class Inventory implements Serializable {
     @Override
     public String toString() {
         return "models.Inventory[ itemId=" + itemId + " ]";
+    }
+
+    public BigDecimal getLength() {
+        return length;
+    }
+
+    public void setLength(BigDecimal length) {
+        this.length = length;
+    }
+
+    @XmlTransient
+    public List<Rental> getRentalList() {
+        return rentalList;
+    }
+
+    public void setRentalList(List<Rental> rentalList) {
+        this.rentalList = rentalList;
     }
     
 }
