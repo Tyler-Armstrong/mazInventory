@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,43 @@ public class adminServlet extends HttpServlet {
     
             switch (action) {
                 
+                
+                case "descriptionOrder":
+                    String orderBy = request.getParameter("searchDescription");
+                    
+                    List <Inventory> resultList = new ArrayList<>();
+                    List <Inventory> LosersList = new ArrayList<>();
+                    
+                    
+                    try {
+                    List<Inventory> inventoryOne = inventory.getAll(page, pageSize);
+                    
+                    
+                    for (Inventory inventory1 : inventoryOne) {
+                        
+                        
+                        if (inventory1.getDescription().equals(orderBy)) {
+                            resultList.add(inventory1);
+                        }else {
+                            LosersList.add(inventory1);
+                        }
+                        
+                    }
+                   resultList.addAll(LosersList);
+                   
+                   request.setAttribute("inventory", resultList);
+                    
+                    
+                    double end = resultList.size();
+                    request.setAttribute("end", end);
+                    } catch (Exception ex) {
+                        Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
+                    return;
+                
+                
+                
                 case "reportAll":
                     List<Inventory> reportListRent;
         try {
@@ -72,7 +110,7 @@ public class adminServlet extends HttpServlet {
                     PrintWriter outItem = response.getWriter();
                     
                     outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 
-                                  "Box Connection ," + "Id     ," + "Length ," + "Status " + "\n");
+                                  "Box Connection ," + "Id     ," + "Length ," + "Status ," + "Location" + "\n");
                     
                     for (Inventory reportInv : reportListRent) {
                         
@@ -82,11 +120,12 @@ public class adminServlet extends HttpServlet {
                             String pinReport = reportInv.getPinConnect();
                             String boxReport = reportInv.getBoxConnect();
                             String idReport = reportInv.getId();
-                            String lengthReport = reportInv.getLength();
+                            BigDecimal lengthReport = reportInv.getLength();
                             String statusReport = reportInv.getStatusName();
+                            String location = reportInv.getLocation();
                             
                             outItem.write(serialReport + "," + descriptionReport + "," + odReport + "," + pinReport + "," 
-                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "\n" );
+                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "," + location + "\n" );
                             
                         
                         
@@ -113,7 +152,7 @@ public class adminServlet extends HttpServlet {
                     PrintWriter outItem = response.getWriter();
                     
                     outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 
-                                  "Box Connection ," + "Id     ," + "Length ," + "Status " + "\n");
+                                  "Box Connection ," + "Id     ," + "Length ," + "Status ," + "Location" +  "\n");
                     
                     for (Inventory reportInv : reportListAll) {
                         if(reportInv.getStatusName().equals("Rented")) {
@@ -123,11 +162,13 @@ public class adminServlet extends HttpServlet {
                             String pinReport = reportInv.getPinConnect();
                             String boxReport = reportInv.getBoxConnect();
                             String idReport = reportInv.getId();
-                            String lengthReport = reportInv.getLength();
+                            
+                            BigDecimal lengthReport = reportInv.getLength();
                             String statusReport = reportInv.getStatusName();
+                            String location = reportInv.getLocation();
                             
                             outItem.write(serialReport + "," + descriptionReport + "," + odReport + "," + pinReport + "," 
-                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "\n" );
+                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "," + location +  "\n" );
                             
                         }
                         
@@ -156,7 +197,7 @@ public class adminServlet extends HttpServlet {
             }
         }
                     
-                    request.setAttribute("message", "Item Deleted");
+                  request.setAttribute("message", "Item Deleted");
                     
                 
                     
@@ -227,7 +268,7 @@ public class adminServlet extends HttpServlet {
                     PrintWriter outItem = response.getWriter();
                     
                     outItem.write("Serial Number," + "Description ," + "OD    ," + "Pin Connection ," + 
-                                  "Box Connection ," + "Id     ," + "Length ," + "Status " + "\n");
+                                  "Box Connection ," + "Id     ," + "Length ," + "Status ," + "Location" + "\n");
                     
                     for (Inventory reportInv : reportList) {
                         if(reportInv.getStatusName().equals("Available")) {
@@ -237,11 +278,12 @@ public class adminServlet extends HttpServlet {
                             String pinReport = reportInv.getPinConnect();
                             String boxReport = reportInv.getBoxConnect();
                             String idReport = reportInv.getId();
-                            String lengthReport = reportInv.getLength();
+                            BigDecimal lengthReport = reportInv.getLength();
                             String statusReport = reportInv.getStatusName();
+                            String locationReport = reportInv.getLocation();
                             
                             outItem.write(serialReport + "," + descriptionReport + "," + odReport + "," + pinReport + "," 
-                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + "\n" );
+                                          + boxReport + "," + idReport + "," + lengthReport + "," + statusReport + ","  + locationReport + "\n" );
                             
                         }
                         

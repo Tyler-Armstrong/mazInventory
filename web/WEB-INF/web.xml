@@ -12,6 +12,14 @@
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>addServlet</servlet-name>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>customerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>addCustomer</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>servlets.loginServlet</servlet-class>
@@ -24,6 +32,18 @@
         <servlet-name>addServlet</servlet-name>
         <servlet-class>servlets.addServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>customerServlet</servlet-name>
+        <servlet-class>servlets.customerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCustomer</servlet-name>
+        <servlet-class>servlets.addCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>rentalServlet</servlet-name>
+        <servlet-class>servlets.rentalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/maz_login</url-pattern>
@@ -35,6 +55,18 @@
     <servlet-mapping>
         <servlet-name>addServlet</servlet-name>
         <url-pattern>/addInventory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>customerServlet</servlet-name>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCustomer</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>rentalServlet</servlet-name>
+        <url-pattern>/rental</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

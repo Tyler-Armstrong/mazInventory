@@ -1,6 +1,7 @@
 package service;
 
 import dataaccess.InventoryDB;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import models.Inventory;
@@ -18,7 +19,8 @@ public class InventoryService {
 
     public void insert(String serialNum, String description, String od, String pin, String box, String id, String length, String status, String location) throws Exception {
         InventoryDB in = new InventoryDB();
-        Inventory newInv = new Inventory(0, serialNum, description, od, pin, box, id, length, status, location);
+        BigDecimal decimalLength = new BigDecimal(length);
+        Inventory newInv = new Inventory(0, serialNum, description, od, pin, box, id, decimalLength, status, location);
         in.add(newInv);
         
     }
@@ -29,10 +31,13 @@ public class InventoryService {
         int primary = Integer.parseInt(pkValue);
         
         Inventory updateSerial = in.get(primary);
+        
         String serial = updateSerial.getSerialNumber();
         
+        BigDecimal decimalLength = new BigDecimal(length);
+        
         //(Integer itemId, String serialNumber, String description, String od, String pinConnect, String boxConnect, String id, String length, String statusName, String location)
-        Inventory updateItem = new Inventory(primary, serial, description, od, pinCon, boxCon, id, length, status ,location);
+        Inventory updateItem = new Inventory(primary, serial, description, od, pinCon, boxCon, id, decimalLength, status ,location);
         
         updateItem.setStatusName(status);
         

@@ -6,20 +6,39 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="style/styleAdd.css">
-        <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+        <link rel="stylesheet" href="style/navStyle.css">
+        
         <title>Add Item</title>
     </head>
     
     <body>
+         <div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Mazz &emsp;&emsp;&emsp;&emsp; Add Inventory
+    </div>
+      
+  </div>
+  
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a class="active" href="maz_admin"> Inventory</a>
+  <a href="addInventory"> Add Inventory</a>
+  <a href="customer"> Customer</a>
+  <a href="addCustomer"> Add Customer</a>
+  </div>
+</div>
         
-        <h2>Add Inventory</h2>
         
-        <div class="adminPage">
-        <a href="maz_admin" class="btn btn-primary btn-lg">Admin Page</a><br><br>
-        </div>
+        
         
         <div class="container">
         <form method="POST" action="addInventory">
@@ -37,13 +56,17 @@
                 <option value="NM Saver Sub">NM Saver Sub</option>
                 <option value="NM Cross Over">NM Cross Over</option>
                 <option value="NM Float Sub">NM Float Sub</option>
+                <option value="NM Brine Slick Collar">NM Brine Slick Collar</option>
+                <option value="NM Brine Flex Collar">NM Brine Flex Collar</option>
+                <option value="NM Brine Slick Pony">NM Brine Slick Pony</option>
+                <option value="NM Brine Flex Pony">NM Brine Flex Pony</option>
                 <option value="Jar">Jar</option>
                 <option value="Jar Pony">Jar Pony</option>
                 <option value="Shock Sub">Shock Sub</option>
-                <option value="Steel Stablizer">Steel Stablizer</option>
+                <option value="Steel Stabilizer">Steel Stabilizer</option>
                 <option value="Steel Cross Over Sub">Steel Cross Over Sub</option>
                 <option value="Pickup Sub">Pickup Sub</option>
-                <option value="TAL Dampner">TAL Dampner</option>
+                <option value="TAL Dampener">TAL Dampener</option>
                 <option value="Steel Saver Sub">Steel Saver Sub</option>
                 <option value="Reamer">Reamer</option>
                 <option value="Tapered Blade Reamer">Tapered Blade Reamer</option>
@@ -57,9 +80,11 @@
             <label for="ODAdd">OD :</label>
             <select name="ODAdd" id="ODAdd" required>
                 <option value=""></option>
+                <option value="3 1/2">3 1/2"</option>
                 <option value="4 3/4">4 3/4"</option>
-                <option value="5">5"</option>
+                <option value="5">5"</option>               
                 <option value="5 1/4">5 1/4"</option>
+                <option value="5 1/2">5 1/2"</option>
                 <option value="5 7/8">5 7/8"</option>
                 <option value="6">6"</option>
                 <option value="6 1/4">6 1/4"</option>
@@ -68,7 +93,9 @@
                 <option value="7">7"</option>
                 <option value="8">8"</option>
                 <option value="8 1/4">8 1/4"</option>
+                <option value="8 3/8">8 3/8"</option>
                 <option value="8 1/2">8 1/2"</option>
+                <option value="8 3/4">8 3/4"</option>
                 <option value="9">9"</option>
                 <option value="9 1/2">9 1/2"</option>
                 
@@ -89,8 +116,10 @@
                 <option value="DS38">DS38</option>
                 <option value="DS40">DS40</option>
                 <option value="XT39">XT39</option>
+                <option value="XT40">XT40</option>
                 <option value="CET43">CET43</option>
                 <option value="HT55">HT55</option>
+                <option value="2 7/8 PH6">2 7/8 PH6</option>
                 <option value="3 1/2 REG">3 1/2 REG</option>
                 <option value="4 1/2 REG">4 1/2 REG</option>
                 <option value="4 H90">4 H90</option>
@@ -118,8 +147,10 @@
                 <option value="DS38">DS38</option>
                 <option value="DS40">DS40</option>
                 <option value="XT39">XT39</option>
+                <option value="XT40">XT40</option>
                 <option value="CET43">CET43</option>
                 <option value="HT55">HT55</option>
+                <option value="2 7/8 PH6">2 7/8 PH6</option>
                 <option value="3 1/2 REG">3 1/2 REG</option>
                 <option value="4 1/2 REG">4 1/2 REG</option>
                 <option value="4 H90">4 H90</option>
@@ -144,6 +175,8 @@
                 <option value="2 13/16">2 13/16"</option>
                 <option value="3">3"</option>
                 <option value="3 1/4">3 1/4"</option>
+                <option value="3 1/2">3 1/2"</option>
+                <option value="4 1/2">4 1/2"</option>
             </select><br><br>
            
             <label for="lengthAdd">Length (Meters): </label> <br>

@@ -5,6 +5,8 @@
     <non-jta-data-source>java:/comp/env/jdbc/maz-inventorydb</non-jta-data-source>
     <class>models.Inventory</class>
     <class>models.User</class>
+    <class>models.Customer</class>
+    <class>models.Rental</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>
