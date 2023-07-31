@@ -42,6 +42,34 @@ CREATE TABLE IF NOT EXISTS `maz-inventorydb`.`customer` (
     PRIMARY KEY (`customer_id`)
 );
 
+
+
+CREATE TABLE IF NOT EXISTS `maz-inventorydb`.`workorder`(
+	`workorder_id`			  INT NOT NULL AUTO_INCREMENT,
+	`customer_id`      	  	  INT NOT NULL,
+	`date_out`      	  	  DATE NOT NULL,
+	`date_due`      	  	  DATE NOT NULL,
+	`authorized_by`      	  VARCHAR(40) NOT NULL,
+	`shipped_custom`      	  BOOLEAN NOT NULL,
+	`shipped_where`      	  VARCHAR(100),
+	`revision`      	  	  VARCHAR(100),
+	`comments`      	  	  VARCHAR(300),
+	`status_open`      	  	  BOOLEAN default 1,
+	PRIMARY KEY (`workorder_id`),
+	FOREIGN KEY (`customer_id`) REFERENCES customer(customer_id)
+);
+
+CREATE TABLE IF NOT EXISTS `maz-inventorydb`.`workorder_item`(
+	`workorder_item_id`			  INT NOT NULL AUTO_INCREMENT,
+	`workorder_id`      	  	  INT NOT NULL,
+	`item_id`      	  	  		  INT NOT NULL,
+	`date_due`      	  	  	  DATE NOT NULL,
+	`date_returned`      	  	  DATE,	
+	PRIMARY KEY (`workorder_item_id`),
+	FOREIGN KEY (`item_id`) REFERENCES inventory(item_id),
+	FOREIGN KEY (`workorder_id`) REFERENCES workorder(workorder_id)
+);
+
 -- sha256 on password field
 INSERT INTO `user` (`username`, `password`)
     VALUES ('admin', '5ad71d5fe5365d2d77d4584a3e15cdd5caf464e470cd7ab6a7251e41859e25f3');
